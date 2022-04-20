@@ -1,3 +1,6 @@
-.idea\
-algorithm.iml
-package.json
+
+/.idea/.gitignore
+/.idea/algorithm.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
