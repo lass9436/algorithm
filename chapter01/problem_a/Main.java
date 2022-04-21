@@ -1,4 +1,4 @@
-package problem_a;
+package chapter01.problem_a;
 
 import java.io.*;
 import java.lang.*;
