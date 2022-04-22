@@ -2,7 +2,7 @@
 const fs = require('fs');
 //input 함수 정의
 const input = (()=>{
-    const stdin = fs.readFileSync('in.txt').toString().split('\n');
+    const stdin = fs.readFileSync('/dev/stdin').toString().split('\n');
     let ln=0;
     return ()=>stdin[ln++];
 })();
