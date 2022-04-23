@@ -67,9 +67,6 @@ function getDfsOrder(N, adj){
         answer.push(status.nodeIndex);
         visited[status.nodeIndex] = true;
 
-        //console.log(Object.keys(adj[status.nodeIndex]).length);
-        //console.log(adj);
-        //console.log(Object.values(adj[status.nodeIndex])[0]);
         //현재 노드와 인접한 노드를 역순으로 조회
         //왜냐하면 작은 숫자를 먼저 pop() 해야하기 때문
         for(let i = Object.values(adj[status.nodeIndex]).length - 1; i >= 0; i--){
@@ -149,8 +146,6 @@ const readline = require('readline');
         lines.push(line);
     }
 
-    //lines.forEach(item => console.log(item));
-
     const N = Number(lines[0].split(" ")[0]);
     const M = Number(lines[0].split(" ")[1]);
 
@@ -169,7 +164,6 @@ const readline = require('readline');
         adjList[i].sort();
     }
 
-    //console.log(adjList);
 
     const dfsOrders = getDfsOrder(N, adjList);
     const bfsOrders = getBfsOrder(N, adjList);
