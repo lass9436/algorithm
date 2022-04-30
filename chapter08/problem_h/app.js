@@ -29,7 +29,7 @@ function getPrimeArr(){
     return primeArr;
 }
 
-//소수의 배열과 원래 수를 입력 받아 다음으로 갈 수 있는 수들의 배열을 반환하는 함수
+//소수의 배열과 원래 수를 입력 받아 다음으로 갈 수 있는 수들을 queue에 넣어주는 함수
 //무한 반복을 막기 위해 visited를 넣어 관리한다.
 function getNextPrimes(primeArr, current, visited, queue){
 
