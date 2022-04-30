@@ -1,0 +1,94 @@
+class State{
+    constructor(row, col){
+        this.row = Number(row);
+        this.col = Number(col);
+    }
+}
+
+const readline = require('readline');
+
+(async () => {
+    let rl = readline.createInterface({ input: process.stdin });
+
+    const lines = [];
+
+
+    for await (const line of rl) {
+        lines.push(line);
+    }
+
+    const N = Number(lines[0]);
+
+    const visited = Array.from(new Array(N), () => new Array(N).fill(false));
+
+    const house = Array.from(new Array(N), () => new Array(N));
+
+    for(let i=0; i<N; i++){
+        for(let j=0; j<N; j++){
+            house[i][j] = Number(lines[i+1].split(" ")[j]);
+        }
+    }
+
+    const queue = new Array();
+
+    const answer = new Array();
+
+    for(let i=0; i<N; i++){
+        for(let j=0; j<N; j++){
+
+            if(visited[i][j]){
+                continue;
+            }
+
+            if(house[i][j] == 1){
+
+                queue.push(new State(i,j));
+
+                let count = 0;
+
+                while(queue.length > 0){
+
+                    const current = queue.shift();
+
+                    if(current.row < 0 || current.row >= N || current.col < 0 || current.col >= N){
+                        continue;
+                    }
+
+                    if(visited[current.row][current.col] == true){
+                        continue;
+                    }
+
+                    if(house[current.row][current.col] == 0){
+                        continue;
+                    }else if(house[current.row][current.col] == 1){
+
+                        visited[current.row][current.col] = true;
+
+                        count++;
+
+                        queue.push(new State(current.row+1, current.col));
+                        queue.push(new State(current.row-1, current.col));
+                        queue.push(new State(current.row, current.col+1));
+                        queue.push(new State(current.row, current.col-1));
+                    }
+
+                }
+
+                answer.push(Number(count));
+
+            }
+
+        }
+    }
+
+    console.log(answer.length);
+
+    answer.sort((a, b) => a - b);
+
+    for(let i=0; i<answer.length; i++){
+        console.log(answer[i]);
+    }
+
+    rl.close();
+    process.exit();
+})();
