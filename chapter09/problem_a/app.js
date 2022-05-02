@@ -29,8 +29,9 @@ const readline = require('readline');
 
     let hamilton = false;
 
+
     for(let i = 1; i <= N; i++){
-        hamilton = isHamilton(i, 0, visited, adj);
+        hamilton = isHamilton(i, 1, visited, adj);
         if(hamilton){
             break;
         }
@@ -47,13 +48,13 @@ const readline = require('readline');
 })();
 
 function isHamilton(current, depth, visited, adj){
+
     //종료 조건 설정
-    //지금 노드를 이미 방문했었다면 false를 리턴하고
     if(visited[current]){
         return false;
     }
-    //깊이가 노드의 개수와 같아졌을 때 true를 리턴함.
-    if(depth == adj.length){
+
+    if(depth == adj.length - 1){
         return true;
     }
 
@@ -66,12 +67,13 @@ function isHamilton(current, depth, visited, adj){
     for(let i=0; i<=adj[current].length; i++){
         //재귀
         hasHamilton = isHamilton(adj[current][i], depth+1, visited, adj);
-        //재귀에서 돌아올 때 visited false로 되돌림.
-        visited[adj[current][i]] = false;
+
         if(hasHamilton){
             break;
         }
     }
+
+    visited[current] = false;
 
     return hasHamilton;
 }
