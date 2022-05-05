@@ -45,13 +45,8 @@ rl.on("line", function(line) {
     lines.push(line);
 }).on("close", function() {
 
-    //lines.forEach((e) => console.log(e));
-
     const V = Number(lines[0].split(" ")[0]);
     const E = Number(lines[0].split(" ")[1]);
-
-    //console.log(V);
-    //console.log(E);
 
     const edges = new Array();
 
